@@ -7,7 +7,7 @@ const morgan = require('morgan');
 const app = express();
 const equipmentController = require('./controllers/equipmentController')
 
-const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/project3-back-end'
+const mongoURI = process.env.MONGODB_URI
 
 const db = mongoose.connection;
 
@@ -26,7 +26,7 @@ app.use(express.json());
 app.use('/equips', equipmentController)
 
 
-
-app.listen(3001, ()=>{
+const PORT = process.env.PORT || 3001
+app.listen(PORT, ()=>{
     console.log('app is running')
 })
