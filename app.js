@@ -1,7 +1,6 @@
 require('dotenv').config();
 const { urlencoded } = require('express');
 const express = require('express');
-const cors = require('cors');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const app = express();
@@ -20,7 +19,6 @@ mongoose
 db.on('disconnected', () => console.log('mongo disconnected'));
 
 app.use(morgan('short'))
-app.use(cors())
 app.use(urlencoded({extended: true}));
 app.use(express.json());
 
