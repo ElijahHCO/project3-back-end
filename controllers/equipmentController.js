@@ -44,9 +44,13 @@ router.get('/ski', async (req, res)=>{
         })
     }
 })
-router.get('/snowboards', async (req, res)=>{
+router.get('/snowboard', async (req, res)=>{
     try{
         const snow = await Equipment.find({type: "Snowboard"})
+        res.send({
+            success: true,
+            data: snow
+        })
     }catch(err){
         res.send({
             success: false,
