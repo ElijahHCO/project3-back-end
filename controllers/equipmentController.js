@@ -16,7 +16,6 @@ router.get('/', async (req, res)=>{
         })
     }
 })
-
 router.post('/', async (req, res)=>{
     try{
         const newEquip = await Equipment.create(req.body);
@@ -31,7 +30,30 @@ router.post('/', async (req, res)=>{
         })
     }
 })
-
+router.get('/ski', async (req, res)=>{
+    try{
+        const ski = await Equipment.find({type: "Ski"})
+        res.send({
+            success: true,
+            data: ski
+        })
+    }catch(err){
+        res.send({
+            success: false,
+            data: err.message
+        })
+    }
+})
+router.get('/snowboards', async (req, res)=>{
+    try{
+        const snow = await Equipment.find({type: "Snowboard"})
+    }catch(err){
+        res.send({
+            success: false,
+            data: err.message
+        })
+    }
+})
 router.get('/:id', async (req, res)=>{
     try{
         const equip = await Equipment.findById(req.params.id);
